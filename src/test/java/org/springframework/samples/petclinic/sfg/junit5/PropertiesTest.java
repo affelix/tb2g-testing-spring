@@ -6,13 +6,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.samples.petclinic.sfg.HearingInterpreter;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ActiveProfiles("yanny")
-@SpringJUnitConfig(classes = HearingInterpreterActiveProfileTest.TestConfig.class)
-public class HearingInterpreterActiveProfileTest {
+/**
+ * @author André Félix
+ * @date 08/03/2021 18:15
+ */
+@TestPropertySource("classpath:yanny.properties")
+@ActiveProfiles("externalized")
+@SpringJUnitConfig(classes = PropertiesTest.TestConfig.class)
+public class PropertiesTest {
 
     @Configuration
     @ComponentScan("org.springframework.samples.petclinic.sfg")
